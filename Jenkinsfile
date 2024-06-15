@@ -2,8 +2,8 @@ pipeline {
   agent any
 
   environment {
-       imagename = "tkibnyusuf/september-image"
-       registryCredential = 'Docker-Hub'
+       imagename = "tkibnyusuf/april_images"
+       registryCredential = 'dockerpass'
        dockerImage = ''
            }
 
@@ -28,7 +28,7 @@ pipeline {
           steps{
                 script {
                    dockerImage = docker.build imagename + ":$BUILD_NUMBER"
-                          }
+                          } 
                       }
                 }
 
