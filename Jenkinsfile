@@ -2,8 +2,8 @@ pipeline {
   agent any
 
   environment {
-       imagename = "tkibnyusuf/april_images"
-       registryCredential = 'dockerpass'
+       imagename = "salhanovic/docker-file"
+       registryCredential = 'docker'
        dockerImage = ''
            }
 
@@ -24,11 +24,11 @@ pipeline {
             }
         }
     
-      stage('Build Docker image') { 
+      stage('Build Docker image') {
           steps{
                 script {
                    dockerImage = docker.build imagename + ":$BUILD_NUMBER"
-                          } 
+                          }
                       }
                 }
 
@@ -45,6 +45,6 @@ pipeline {
           steps{
               sh "docker rmi $imagename:$BUILD_NUMBER"
                         }
-            }  
+            }
    }
 }
